@@ -1,0 +1,41 @@
+{% include 'header.html'%}
+<!--recibimos el mensaje flash de error-->
+{% with messages=get_flashed_messages() %}
+
+  <!--ahora recorremos los mensajes de error que tengamos-->
+  {% if messages %}
+  <div class="alert alert-danger" role="alert">
+      {% for message in messages %}
+        {{message}}
+
+      {% endfor %}
+  </div>
+  {% endif %}
+{% endwith%}
+<div class="card">
+  
+  <div class="card-body">
+    <form method="POST"  action="/store" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="">Nombre</label>
+        <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="">
+     
+      </div>
+      <div class="form-group">
+          <label for="">Email</label>
+          <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="">
+       
+        </div>
+        <div class="form-group">
+          <label for="">Foto</label>
+          <input type="file" class="form-control" name="foto" id="foto" aria-describedby="helpId" placeholder="">
+       
+        </div>
+        
+      <button type="submit" class="btn btn-primary">Crear</button>
+  </form>
+  </div>
+</div>
+
+        
+  {% include 'footer.html'%}

@@ -1,0 +1,37 @@
+{% include 'header.html'%}
+
+<div class="card">
+  
+  <div class="card-body">
+  
+    <strong>Edicion de empleados</strong>
+    <form method="POST"  action="/update" enctype="multipart/form-data">
+        <div class="form-group">
+          <input hidden type="text" class="form-control" value="{{empleado_editar[0][0]}}" name="idempleado" id="idempleado" aria-describedby="helpId" placeholder=""> 
+          <label for="">Nombre</label>
+          <!-- como me llega un atupla ((1,prueba,probando)) 0 es posicion 1 y luego accedemos a los demas datos en posicion numerica-->
+          <input type="text" class="form-control" value="{{empleado_editar[0][1]}}" name="nombre" id="nombre" aria-describedby="helpId" placeholder="">
+       
+        </div>
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" class="form-control" value="{{empleado_editar[0][2]}}" name="email" id="email" aria-describedby="helpId" placeholder="">
+         
+          </div>
+          <div class="form-group">
+            <label for="">actual</label>
+            <!-- este es el metodo uploads que creamos nosotros para poder mostrar la imagen en app.py-->
+            <img src="{{url_for('uploads',nombreFoto=empleado_editar[0][3])}}" width="50px" height="50px">
+          
+          </div>
+          <div class="form-group">
+            <label for="">Foto</label>
+            <input type="file" class="form-control" name="foto" id="foto" aria-describedby="helpId" placeholder="">
+         
+          </div>
+          
+        <button type="submit" class="btn btn-primary">Crear</button>
+    </form>
+  </div>
+</div>
+    {% include 'footer.html'%}

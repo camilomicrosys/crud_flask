@@ -1,0 +1,35 @@
+{% include 'header.html'%}
+   <form method="GET" action="/create">
+    
+    <button type="submit" class="btn btn-primary">Agregar</button>
+   
+   </form>
+   <button id="prueba" type="submit" class="btn btn-primary">Prueba Jquery</button>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Foto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+          <!-- empleado viene del archivo app que es las rutas asi como laravel se manda el array a la vista-->
+           {% for empleado in empleados%}
+           
+            <tr>
+                <td scope="row">{{empleado[0]}}</td>
+                <td>{{empleado[1]}}</td>
+                <td>{{empleado[2]}}</td>
+                <td><img src="uploads/{{empleado[3]}}" width="50px" height="50px"></td>
+                <td><button type="submit" class="btn btn-warning"><a href="/editar/{{empleado[0]}}">Editar</a></button></button></td>
+                <td><button type="submit" class="btn btn-danger"><a onclick="return confirm('Deseas eliminar este empleado?')" href="/destroy/{{empleado[0]}}">Eliminar</a></button></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+    {% include 'footer.html'%}
